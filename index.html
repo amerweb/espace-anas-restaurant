@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Anass - Petit Déjeuner & Cuisine Marocaine | Marrakech</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* ===== ROOT (Light) & DARK ===== */
+        :root {
+            --primary-gold: #d97706;
+            --primary-dark: #451a03;
+            --accent-red: #dc2626;
+            --bg-warm: #faf8f5;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --whatsapp-green: #25d366;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --border-light: #f3f4f6;
+            --dash-color: #e5e7eb;
+            --topbar-bg: #270701;
+            --topbar-text: #fef3c7;
+            --footer-bg: #270701;
+            --tab-border: var(--primary-gold);
+            --mascot-bg: linear-gradient(135deg, #fef3c7, #fde68a);
+            --placeholder-bg: #f8fafc;
+            --placeholder-border: #cbd5e1;
+            --placeholder-color: #94a3b8;
+            --price-bg: #fef3c7;
+            --slider-overlay: rgba(0,0,0,0.85);
+            --slider-btn-bg: rgba(0,0,0,0.4);
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --bg-warm: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.5);
+            --border-light: #2a2a2a;
+            --dash-color: #333;
+            --topbar-bg: #0d0d0d;
+            --topbar-text: #e0d6b0;
+            --footer-bg: #0d0d0d;
+            --mascot-bg: linear-gradient(135deg, #2d1f0a, #4a2c0c);
+            --placeholder-bg: #2a2a2a;
+            --placeholder-border: #444;
+            --placeholder-color: #777;
+            --price-bg: #2d1f0a;
+            --slider-overlay: rgba(0,0,0,0.9);
+            --slider-btn-bg: rgba(255,255,255,0.15);
+            --tab-border: #b8860b;
+        }
+
+        /* ===== BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            padding-bottom: 90px;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background-color: var(--topbar-bg);
+            color: var(--topbar-text);
+            padding: 8px 0;
+            font-size: 0.85rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .social-links-top a {
+            color: var(--topbar-text);
+            margin-left: 12px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .social-links-top a:hover { color: var(--primary-gold); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo-box h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            transition: color 0.3s;
+        }
+        body.dark-mode .logo-box h1 { color: #f0d080; }
+        .logo-box span {
+            font-size: 0.8rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+            display: block;
+            margin-top: -3px;
+        }
+
+        .btn-call {
+            background-color: var(--accent-red);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            transition: 0.3s;
+        }
+        .btn-call:hover { transform: translateY(-2px); }
+
+        /* ===== MASCOT ===== */
+        .mascot-banner {
+            max-width: 1200px;
+            margin: 1rem auto 0 auto;
+            background: var(--mascot-bg);
+            border-radius: 16px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.15);
+            transition: background 0.4s;
+        }
+        .bouncing-egg {
+            font-size: 2.2rem;
+            display: inline-block;
+            animation: bounceEgg 2s infinite ease-in-out;
+            cursor: pointer;
+        }
+        @keyframes bounceEgg {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            30% { transform: translateY(-12px) rotate(-8deg); }
+            50% { transform: translateY(0) rotate(8deg); }
+            70% { transform: translateY(-6px) rotate(-4deg); }
+        }
+        .mascot-text {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        body.dark-mode .mascot-text { color: #f0d080; }
+
+        /* ===== SLIDER ===== */
+        .slider-section {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s;
+        }
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, var(--slider-overlay));
+            color: white;
+            padding: 2rem 1.5rem 1.2rem 1.5rem;
+        }
+        .slide-caption h2 {
+            font-size: 2rem;
+            color: #fde047;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .slide-caption p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--slider-btn-bg);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            padding: 14px 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+        }
+        .slider-btn:hover {
+            background: var(--primary-gold);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        /* Slider indicators */
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .slider-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .slider-dots span.active {
+            background: var(--primary-gold);
+            border-color: white;
+            transform: scale(1.2);
+        }
+        .slider-dots span:hover {
+            background: var(--primary-gold);
+            transform: scale(1.1);
+        }
+
+        /* ===== TABS ===== */
+        .category-tabs {
+            max-width: 1200px;
+            margin: 1.8rem auto 1rem auto;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+        .tab-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--tab-border);
+            color: var(--text-main);
+            padding: 7px 16px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.88rem;
+        }
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+        body.dark-mode .tab-btn {
+            background: #1e1e1e;
+            color: #e0d6b0;
+        }
+        body.dark-mode .tab-btn.active,
+        body.dark-mode .tab-btn:hover {
+            background: #b8860b;
+            color: #fff;
+        }
+
+        /* ===== MENU GRID ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 3rem 1.5rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+        }
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border 0.3s;
+        }
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        body.dark-mode .menu-card:hover {
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+        }
+
+        .card-header {
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-dark);
+            font-size: 1.15rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+        body.dark-mode .card-header { color: #f0d080; }
+
+        .item-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed var(--dash-color);
+            transition: border 0.3s;
+        }
+        .item-row:last-child { border-bottom: none; }
+
+        .item-img-placeholder {
+            width: 68px;
+            height: 68px;
+            border-radius: 12px;
+            background: var(--placeholder-bg);
+            border: 1px dashed var(--placeholder-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--placeholder-color);
+            font-size: 0.68rem;
+            flex-shrink: 0;
+            overflow: hidden;
+            transition: background 0.3s, border 0.3s;
+        }
+        .item-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info { flex-grow: 1; }
+        .item-name {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .item-desc {
+            font-size: 0.78rem;
+            color: var(--placeholder-color);
+            margin-top: 2px;
+            display: block;
+        }
+        .item-price {
+            font-weight: 800;
+            color: var(--primary-dark);
+            background: var(--price-bg);
+            padding: 4px 9px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode .item-price { color: #f0d080; }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .floating-order-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 550px;
+            background: var(--whatsapp-green);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 35px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.95rem;
+            animation: pulseWhatsapp 2s infinite;
+        }
+        @keyframes pulseWhatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 3rem 1.5rem 1.5rem 1.5rem;
+            margin-top: 3rem;
+            transition: background 0.3s;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h3 {
+            color: #fde047;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .footer-col p,
+        .footer-col a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .social-icons-footer {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .social-icons-footer a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .social-icons-footer a:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .slide {
+                height: 280px;
+            }
+            .slide-caption h2 { font-size: 1.3rem; }
+            .slide-caption p { font-size: 0.9rem; }
+            .logo-box h1 {
+                font-size: 1.2rem;
+            }
+            .btn-call {
+                font-size: 0.78rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .mascot-banner {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            .top-bar-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .social-links-top a {
+                margin: 0 6px;
+            }
+            .slider-btn {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+        }
+
+        /* ===== LANGUAGE + THEME BUTTONS (in navbar) ===== */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle,
+        .lang-toggle {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--primary-dark);
+            transition: color 0.3s, transform 0.2s;
+            padding: 0 4px;
+            line-height: 1;
+        }
+        .theme-toggle:hover,
+        .lang-toggle:hover {
+            transform: scale(1.1) rotate(8deg);
+        }
+        body.dark-mode .theme-toggle,
+        body.dark-mode .lang-toggle {
+            color: #f0d080;
+        }
+
+        /* Language dropdown mini */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .lang-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            background: var(--card-bg);
+            min-width: 100px;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 6px 0;
+            border: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: background 0.3s, border 0.3s;
+        }
+        .lang-dropdown-content button {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: background 0.2s, color 0.2s;
+        }
+        .lang-dropdown-content button:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+        .lang-dropdown:hover .lang-dropdown-content {
+            display: block;
+        }
+        .lang-dropdown-content button.active-lang {
+            background: var(--primary-gold);
+            color: white;
+        }
+        body.dark-mode .lang-dropdown-content button.active-lang {
+            background: #b8860b;
+        }
+
+        /* ===== EFFECTS ===== */
+        .menu-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .menu-card:nth-child(1) { animation-delay: 0.05s; }
+        .menu-card:nth-child(2) { animation-delay: 0.10s; }
+        .menu-card:nth-child(3) { animation-delay: 0.15s; }
+        .menu-card:nth-child(4) { animation-delay: 0.20s; }
+        .menu-card:nth-child(5) { animation-delay: 0.25s; }
+        .menu-card:nth-child(6) { animation-delay: 0.30s; }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .glow-gold {
+            transition: box-shadow 0.3s;
+        }
+        .glow-gold:hover {
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div><i class="fa-solid fa-location-dot"></i> <span data-lang="address">Rue des écoles, Bouakkaz, Marrakech</span></div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/share/1BdDzhogQD/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ESPACE_ANASS" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/212767316241" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="navbar">
+            <div class="logo-box">
+                <h1>ESPACE ANASS <span>فضاء أنس</span></h1>
+                <span data-lang="subtitle">Petit Déjeuner</span>
+            </div>
+            <div class="nav-actions">
+                <!-- Language Dropdown -->
+                <div class="lang-dropdown">
+                    <button class="lang-toggle" id="langToggleBtn" title="Changer la langue">🌐</button>
+                    <div class="lang-dropdown-content" id="langDropdown">
+                        <button data-lang-code="fr" class="active-lang">🇫🇷 Français</button>
+                        <button data-lang-code="ar">🇸🇦 العربية</button>
+                        <button data-lang-code="en">🇬🇧 English</button>
+                    </div>
+                </div>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" title="Dark / Light mode">🌙</button>
+                <a href="tel:+212767316241" class="btn-call">
+                    <i class="fa-solid fa-phone"></i> 0767-316241
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MASCOT ===== -->
+    <div class="mascot-banner">
+        <div class="bouncing-egg" id="eggMascot" onclick="hatchEgg()" title="Cliquez pour faire éclore !">🥚</div>
+        <div class="mascot-text" id="mascotMsg" data-lang="mascot">
+            Bienvenue chez Espace Anass !
+        </div>
+    </div>
+
+    <!-- ===== SLIDER AVEC 6 IMAGES ===== -->
+    <div class="slider-section">
+        <div class="slider-container" id="slider">
+            <!-- Slide 1: Petit Déjeuner -->
+            <div class="slide">
+                <img src="فطور بلدي.jpg" alt="Petit Déjeuner Marocain" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide1_title">Petit Déjeuner Authentique</h2>
+                    <p data-lang="slide1_desc">Formules Chamali, Fassi et Beldi pour bien commencer votre journée.</p>
+                </div>
+            </div>
+            <!-- Slide 2: Mkilat -->
+            <div class="slide">
+                <img src="/3.png" alt="Mkilat Marocain" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide2_title">Mkilat & Omelettes</h2>
+                    <p data-lang="slide2_desc">Nos célèbres mkilat préparées avec des ingrédients frais et savoureux.</p>
+                </div>
+            </div>
+            <!-- Slide 3: Tajines -->
+            <div class="slide">
+                <img src="/13.png" alt="Tajine Marocain" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide3_title">Tajines Traditionnels</h2>
+                    <p data-lang="slide3_desc">Tajine Poulet, Boeuf aux Légumes, et Viande Hachée.</p>
+                </div>
+            </div>
+            <!-- Slide 4: Couscous -->
+            <div class="slide">
+                <img src="/21.png" alt="Couscous Marocain" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide4_title">Couscous & Plats Populaires</h2>
+                    <p data-lang="slide4_desc">Couscous de Boeuf et de Poulet disponibles chaque Vendredi.</p>
+                </div>
+            </div>
+            <!-- Slide 5: Rfissa -->
+            <div class="slide">
+                <img src="/18.png" alt="Rfissa Marocaine" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide5_title">Rfissa & Spécialités</h2>
+                    <p data-lang="slide5_desc">Rfissa Marocaine, Soupe Harira, Bisara et plus encore.</p>
+                </div>
+            </div>
+            <!-- Slide 6: Boissons -->
+            <div class="slide">
+                <img src="/40.png" alt="Boissons Marocaines" />
+                <div class="slide-caption">
+                    <h2 data-lang="slide6_title">Boissons & Accompagnements</h2>
+                    <p data-lang="slide6_desc">Thé à la menthe, Café, Jus d'orange et autres délices.</p>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all')" data-lang="tab-all">Tout</button>
+        <button class="tab-btn" onclick="filterCategory('breakfast')" data-lang="tab-breakfast">Petit Déjeuner</button>
+        <button class="tab-btn" onclick="filterCategory('mkilat')" data-lang="tab-mkilat">Mkilat</button>
+        <button class="tab-btn" onclick="filterCategory('tajine')" data-lang="tab-tajine">Tajines</button>
+        <button class="tab-btn" onclick="filterCategory('Mhiricha')" data-lang="tab-mhiricha">Mhiricha</button>
+        <button class="tab-btn" onclick="filterCategory('popular')" data-lang="tab-popular">Plats Populaires</button>
+        <button class="tab-btn" onclick="filterCategory('drinks')" data-lang="tab-drinks">Boissons</button>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <div class="container">
+        <div class="menu-grid">
+
+            <!-- 1. Formules Petit Déjeuner -->
+            <div class="menu-card" data-cat="breakfast">
+                <div class="card-header"><i class="fa-solid fa-mug-saucer"></i> <span data-lang="breakfast_title">Formules Petit Déjeuner</span></div>
+
+                <div class="item-row">
+                    <div class="item-img-placeholder"><img src="chamalii.jpg" alt="CHAMALI" /></div>
+                    <div class="item-info">
+                        <span class="item-name">CHAMALI</span>
+                        <span class="item-desc" data-lang="chamali">Jus d'orange + Verre de thé + Omelette + Dinde fumée + Jben + Huile d'olive + Fromage rouge + Olive noire + Avocat en tranche + Pain</span>
+                    </div>
+                    <span class="item-price">40 DH</span>
+                </div>
+
+                <div class="item-row">
+                    <div class="item-img-placeholder"><img src="خليع.png" alt="fassi" /></div>
+                    <div class="item-info">
+                        <span class="item-name">FASSI</span>
+                        <span class="item-desc" data-lang="fassi">Omelette Khlii + Jus d'orange + Boisson chaude + Huile d'olive + Pain + Olive noire</span>
+                    </div>
+                    <span class="item-price">40 DH</span>
+                </div>
+
+                <div class="item-row">
+                    <div class="item-img-placeholder"><img src="اكسبريس.png" alt="EXPRESS" /></div>
+                    <div class="item-info">
+                        <span class="item-name">EXPRESS</span>
+                        <span class="item-desc" data-lang="express">Omelette + Fromage + Olive noire + Pain + Thé + Huile d'olive</span>
+                    </div>
+                    <span class="item-price">22 DH</span>
+                </div>
+
+                <div class="item-row">
+                    <div class="item-img-placeholder"><img src="انس.png" alt="ANASS" /></div>
+                    <div class="item-info">
+                        <span class="item-name">ANASS</span>
+                        <span class="item-desc" data-lang="anass">B.M Khlii Fromage + Jus d'orange + Boisson chaude + Huile d'olive + Olive noire</span>
+                    </div>
+                    <span class="item-price">50 DH</span>
+                </div>
+
+                <div class="item-row">
+                    <div class="item-img-placeholder"><img src="بلدي.png" alt="BELDI" /></div>
+                    <div class="item-info">
+                        <span class="item-name">BELDI</span>
+                        <span class="item-desc" data-lang="beldi">Amlou + Huile d'olive + Miel + Beurre + Pain + Boisson chaude + Batboute + Msemen + Jus d'orange</span>
+                    </div>
+                    <span class="item-price">40 DH</span>
+                </div>
+            </div>
+
+            <!-- 2. Mkilat -->
+            <div class="menu-card" data-cat="mkilat">
+                <div class="card-header"><i class="fa-solid fa-fire"></i> <span data-lang="mkilat_title">Mkilat</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/3.png" alt="Mkila Fromage" /></div><div class="item-info"><span class="item-name">Mkila Fromage</span></div><span class="item-price">15 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/2.png" alt="Mkila Normal" /></div><div class="item-info"><span class="item-name">Mkila Normal</span></div><span class="item-price">12 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/1.png" alt="Mkila B.M" /></div><div class="item-info"><span class="item-name">Mkila B.M</span></div><span class="item-price">14 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/44.png" alt="Mkila Anass" /></div><div class="item-info"><span class="item-name">Mkila Anass</span><span class="item-desc" data-lang="mkilaanass">Fromage + Viande Hachée + Olive noire + Tomate</span></div><span class="item-price">30 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/4.png" alt="Mkila B.M Khlii" /></div><div class="item-info"><span class="item-name">Mkila B.M Khlii</span></div><span class="item-price">23 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/5.png" alt="Mkila Lunchon" /></div><div class="item-info"><span class="item-name">Mkila Lunchon</span></div><span class="item-price">14 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/7.png" alt="Mkila B.M Fromage" /></div><div class="item-info"><span class="item-name">Mkila B.M Fromage</span></div><span class="item-price">18 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/8.png" alt="Mkila Khlii" /></div><div class="item-info"><span class="item-name">Mkila Khlii</span></div><span class="item-price">25 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/9.png" alt="Mkila Viande Hachée" /></div><div class="item-info"><span class="item-name">Mkila Viande Hachée</span></div><span class="item-price">20 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/99.png" alt="Mkila Mixte" /></div><div class="item-info"><span class="item-name">Mkila Mixte</span><span class="item-desc" data-lang="mkilamixte">Fromage + Luncheon + Olive noire</span></div><span class="item-price">18 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/10.png" alt="Mkila Fruit de Mer" /></div><div class="item-info"><span class="item-name">Mkila Fruit de Mer</span></div><span class="item-price">40 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/11.png" alt="Mkila Bouzroug" /></div><div class="item-info"><span class="item-name">Mkila Bouzroug</span></div><span class="item-price">30 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/12.png" alt="Mkila Crevette" /></div><div class="item-info"><span class="item-name">Mkila Crevette</span></div><span class="item-price">30 DH</span></div>
+                <p style="font-size:0.8rem; color:var(--primary-dark); font-weight:700; margin-top:8px;" data-lang="extra-egg">* Extra Oeuf Beldi : +2 DH</p>
+            </div>
+
+            <!-- 3. Tajines -->
+            <div class="menu-card" data-cat="tajine">
+                <div class="card-header"><i class="fa-solid fa-cloud-meatball"></i> <span data-lang="tajine_title">Menu du Déjeuner - Tajines</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/13.png" alt="Tajine Poulet Légumes" /></div><div class="item-info"><span class="item-name">Tajine Poulet aux Légumes</span></div><span class="item-price">25 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/14.png" alt="Tajine Boeuf Légumes" /></div><div class="item-info"><span class="item-name">Tajine Boeuf aux Légumes</span></div><span class="item-price">35 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/15.png" alt="Tajine Viande Hachée" /></div><div class="item-info"><span class="item-name">Tajine Viande Hachée</span></div><span class="item-price">30 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/20.png" alt="T9liya" /></div><div class="item-info"><span class="item-name">T9liya</span></div><span class="item-price">17 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/16.png" alt="Tajine Poulet Citron" /></div><div class="item-info"><span class="item-name">Tajine Poulet au Citron + Frites</span></div><span class="item-price">25 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/17.png" alt="Tajine Pruneaux" /></div><div class="item-info"><span class="item-name">Tajine au Pruneaux</span></div><span class="item-price">40 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/18.png" alt="Rfissa" /></div><div class="item-info"><span class="item-name">Rfissa Marocaine</span></div><span class="item-price">30 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/19.png" alt="Tête de Veau" /></div><div class="item-info"><span class="item-name">Tête de Veau</span></div><span class="item-price">30 DH</span></div>
+            </div>
+
+            <!-- 4. Mhiricha -->
+            <div class="menu-card" data-cat="Mhiricha">
+                <div class="card-header"><i class="fa-solid fa-bread-slice"></i> <span data-lang="mhiricha_title">Mhiricha</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/31.png" alt="Mhiricha Normal" /></div><div class="item-info"><span class="item-name">Mhiricha Normal</span></div><span class="item-price">12 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/32.png" alt="Mhiricha Omelette Fromage" /></div><div class="item-info"><span class="item-name">Mhiricha Omelette Fromage</span></div><span class="item-price">15 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/33.png" alt="Mhiricha Omelette Luncheon" /></div><div class="item-info"><span class="item-name">Mhiricha Omelette Luncheon</span></div><span class="item-price">14 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/34.png" alt="Mhiricha Omelette Fromage Luncheon" /></div><div class="item-info"><span class="item-name">Mhiricha Omelette Fromage + Luncheon</span></div><span class="item-price">18 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/35.png" alt="Mhiricha Omelette Khlii" /></div><div class="item-info"><span class="item-name">Mhiricha Omelette Khlii</span></div><span class="item-price">25 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/36.png" alt="Mhiricha Omelette Khlii Fromage" /></div><div class="item-info"><span class="item-name">Mhiricha Omelette Khlii + Fromage</span></div><span class="item-price">30 DH</span></div>
+            </div>
+
+            <!-- 5. Plats Populaires -->
+            <div class="menu-card" data-cat="popular">
+                <div class="card-header"><i class="fa-solid fa-bowl-food"></i> <span data-lang="popular_title">Plats Populaires & Couscous</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/21.png" alt="Couscous Boeuf" /></div><div class="item-info"><span class="item-name">Couscous de Boeuf</span></div><span class="item-price">40 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/22.png" alt="Couscous Poulet" /></div><div class="item-info"><span class="item-name">Couscous de Poulet</span></div><span class="item-price">35 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/23.png" alt="Soupe Marocaine" /></div><div class="item-info"><span class="item-name">Soupe Marocaine + Datte + Oeuf</span></div><span class="item-price">10 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/24.png" alt="Soupe Blanche" /></div><div class="item-info"><span class="item-name">Soupe Blanche d'Orge</span></div><span class="item-price">05 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/25.png" alt="Bisara" /></div><div class="item-info"><span class="item-name">Bisara</span></div><span class="item-price">10 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/266.png" alt="Loubia" /></div><div class="item-info"><span class="item-name">Haricots Blancs / Loubia</span></div><span class="item-price">12 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/277.png" alt="Msemen" /></div><div class="item-info"><span class="item-name">Msemen</span></div><span class="item-price">03 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/28.png" alt="Batbout" /></div><div class="item-info"><span class="item-name">Batbout Pain Complet</span></div><span class="item-price">03 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/29.png" alt="Khobz Chair" /></div><div class="item-info"><span class="item-name">Khobz Chair</span></div><span class="item-price">04 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/30.png" alt="Harcha" /></div><div class="item-info"><span class="item-name">Harcha</span></div><span class="item-price">03 DH</span></div>
+            </div>
+
+            <!-- 6. Boissons -->
+            <div class="menu-card" data-cat="drinks">
+                <div class="card-header"><i class="fa-solid fa-mug-hot"></i> <span data-lang="drinks_title">Boissons & Accompagnements</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/40.png" alt="Thé Moyen" /></div><div class="item-info"><span class="item-name">Thé Moyen</span></div><span class="item-price">08 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/41.png" alt="Thé Grand" /></div><div class="item-info"><span class="item-name">Thé Grand Familiale</span></div><span class="item-price">15 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/42.png" alt="Café" /></div><div class="item-info"><span class="item-name">Café au Lait / Expresso</span></div><span class="item-price">08/12 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/43.png" alt="Za3za3" /></div><div class="item-info"><span class="item-name">Za3za3</span></div><span class="item-price">25 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/45.png" alt="Raib Beldi" /></div><div class="item-info"><span class="item-name">Raib Beldi</span></div><span class="item-price">05 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/46.png" alt="Argan" /></div><div class="item-info"><span class="item-name">Argan 30ml</span></div><span class="item-price">30 DH</span></div>
+                <div class="item-row"><div class="item-img-placeholder"><img src="/47.png" alt="Huile" /></div><div class="item-info"><span class="item-name">Huile d'Olive / Beurre / Amlou / Jben</span></div><span class="item-price">04 DH</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== FLOATING WHATSAPP ===== -->
+    <a href="https://wa.me/212767316241?text=Bonjour,%20je%20souhaite%20commander%20chez%20Espace%20Anass" target="_blank" class="floating-order-bar">
+        <span><i class="fa-brands fa-whatsapp fa-xl"></i> <span data-lang="order-btn">Commander sur WhatsApp</span></span>
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>ESPACE ANASS</h3>
+                <p data-lang="footer-desc">Votre meilleure destination à Marrakech pour déguster un vrai petit déjeuner beldi, des mkilat et des tajines marocains traditionnels.</p>
+            </div>
+            <div class="footer-col">
+                <h3 data-lang="footer-contact">Contact & Adresse</h3>
+                <p><i class="fa-solid fa-phone"></i> +212 767-316241</p>
+                <p><i class="fa-solid fa-location-dot"></i> <span data-lang="address">Rue des écoles, Bouakkaz, Marrakech</span></p>
+                <div class="social-icons-footer">
+                    <a href="https://www.facebook.com/share/1BdDzhogQD/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ESPACE_ANASS" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/212767316241" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3 data-lang="footer-hours">Horaires</h3>
+                <p data-lang="footer-hours-text">Ouvert 6j/7 — Fermé le Dimanche.</p>
+                <p style="color:#fde047; font-weight:700;" data-lang="footer-couscous">* Couscous Marocain disponible chaque Vendredi !</p>
+                <p style="color:#fde047; font-weight:700;" data-lang="footer-rfissa">* Rfissa Marocain disponible chaque Mercredi !</p>
+            </div>
+        </div>
+        <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:1rem; font-size:0.85rem; color:#a1a1aa;">
+            © Tous droits réservés - Espace Anass Marrakech
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ==========================================
+        // 1. DARK / LIGHT MODE
+        // ==========================================
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        } else {
+            themeToggle.textContent = '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // ==========================================
+        // 2. EGG MASCOT
+        // ==========================================
+        let isHatched = false;
+
+        function hatchEgg() {
+            const egg = document.getElementById('eggMascot');
+            const msg = document.getElementById('mascotMsg');
+            if (!isHatched) {
+                egg.innerHTML = '🐣';
+                msg.textContent = 'Coucou ! Bon appétit chez Espace Anass ! 🐥';
+                isHatched = true;
+            } else {
+                egg.innerHTML = '🍳';
+                msg.textContent = 'Mkilat & Omelettes fraîches préparées avec amour ! ❤️';
+                isHatched = false;
+            }
+        }
+
+        // ==========================================
+        // 3. SLIDER AVEC 6 IMAGES ET DOTS
+        // ==========================================
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slider = document.getElementById('slider');
+        const totalSlides = slides.length;
+
+        // Créer les dots
+        const dotsContainer = document.getElementById('sliderDots');
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.setAttribute('data-index', i);
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', function () {
+                goToSlide(parseInt(this.getAttribute('data-index')));
+            });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = document.querySelectorAll('.slider-dots span');
+
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function moveSlide(dir) {
+            currentSlide += dir;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            goToSlide(currentSlide);
+        }
+
+        // Auto-slide toutes les 4 secondes
+        let autoSlide = setInterval(() => moveSlide(1), 4000);
+
+        // Pause auto-slide au survol
+        const sliderSection = document.querySelector('.slider-section');
+        sliderSection.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        sliderSection.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => moveSlide(1), 4000);
+        });
+
+        // ==========================================
+        // 4. CATEGORY FILTER
+        // ==========================================
+        function filterCategory(cat) {
+            const cards = document.querySelectorAll('.menu-card');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            const clicked = Array.from(btns).find(b =>
+                b.textContent.trim().toLowerCase().includes(cat === 'all' ? 'tout' : cat)
+            );
+            if (clicked) clicked.classList.add('active');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ==========================================
+        // 5. TRANSLATION
+        // ==========================================
+        const translations = {
+            fr: {
+                address: 'Rue des écoles, Bouakkaz, Marrakech',
+                subtitle: 'Petit Déjeuner',
+                mascot: 'Bienvenue chez Espace Anass !',
+                slide1_title: 'Petit Déjeuner Authentique',
+                slide1_desc: 'Formules Chamali, Fassi et Beldi pour bien commencer votre journée.',
+                slide2_title: 'Mkilat & Omelettes',
+                slide2_desc: 'Nos célèbres mkilat préparées avec des ingrédients frais et savoureux.',
+                slide3_title: 'Tajines Traditionnels',
+                slide3_desc: 'Tajine Poulet, Boeuf aux Légumes, et Viande Hachée.',
+                slide4_title: 'Couscous & Plats Populaires',
+                slide4_desc: 'Couscous de Boeuf et de Poulet disponibles chaque Vendredi.',
+                slide5_title: 'Rfissa & Spécialités',
+                slide5_desc: 'Rfissa Marocaine, Soupe Harira, Bisara et plus encore.',
+                slide6_title: 'Boissons & Accompagnements',
+                slide6_desc: 'Thé à la menthe, Café, Jus d\'orange et autres délices.',
+                'tab-all': 'Tout',
+                'tab-breakfast': 'Petit Déjeuner',
+                'tab-mkilat': 'Mkilat',
+                'tab-tajine': 'Tajines',
+                'tab-mhiricha': 'Mhiricha',
+                'tab-popular': 'Plats Populaires',
+                'tab-drinks': 'Boissons',
+                breakfast_title: 'Formules Petit Déjeuner',
+                chamali: 'Jus d\'orange + Verre de thé + Omelette + Dinde fumée + Jben + Huile d\'olive + Fromage rouge + Olive noire + Avocat en tranche + Pain',
+                fassi: 'Omelette Khlii + Jus d\'orange + Boisson chaude + Huile d\'olive + Pain + Olive noire',
+                express: 'Omelette + Fromage + Olive noire + Pain + Thé + Huile d\'olive',
+                anass: 'B.M Khlii Fromage + Jus d\'orange + Boisson chaude + Huile d\'olive + Olive noire',
+                beldi: 'Amlou + Huile d\'olive + Miel + Beurre + Pain + Boisson chaude + Batboute + Msemen + Jus d\'orange',
+                'extra-egg': '* Extra Oeuf Beldi : +2 DH',
+                mkilat_title: 'Mkilat',
+                mkilaanass: 'Fromage + Viande Hachée + Olive noire + Tomate',
+                mkilamixte: 'Fromage + Luncheon + Olive noire',
+                tajine_title: 'Menu du Déjeuner - Tajines',
+                mhiricha_title: 'Mhiricha',
+                popular_title: 'Plats Populaires & Couscous',
+                drinks_title: 'Boissons & Accompagnements',
+                'order-btn': 'Commander sur WhatsApp',
+                'footer-desc': 'Votre meilleure destination à Marrakech pour déguster un vrai petit déjeuner beldi, des mkilat et des tajines marocains traditionnels.',
+                'footer-contact': 'Contact & Adresse',
+                'footer-hours': 'Horaires',
+                'footer-hours-text': 'Ouvert 6j/7 — Fermé le Dimanche.',
+                'footer-couscous': '* Couscous Marocain disponible chaque Vendredi !',
+                'footer-rfissa': '* Rfissa Marocain disponible chaque Mercredi !'
+            },
+            ar: {
+                address: 'شارع المدارس، بوعكاز، مراكش',
+                subtitle: 'الفطور',
+                mascot: 'مرحباً بكم في فضاء أنس !',
+                slide1_title: 'فطور بلدي أصيل',
+                slide1_desc: 'صيغ شمالي وفاسي وبلدي لبداية يومك بشكل جيد.',
+                slide2_title: 'المقيلات والأومليت',
+                slide2_desc: 'مقيلاتنا الشهيرة المحضرة بمكونات طازجة ولذيذة.',
+                slide3_title: 'الطواجن التقليدية',
+                slide3_desc: 'طاجين الدجاج، البقر بالخضر، والكفتة.',
+                slide4_title: 'الكسكس والأطباق الشعبية',
+                slide4_desc: 'كسكس البقر والدجاج متوفر كل يوم جمعة.',
+                slide5_title: 'الرفيسة والخاصيات',
+                slide5_desc: 'الرفيسة المغربية، حساء الحريرة، البصارة والمزيد.',
+                slide6_title: 'المشروبات والمرافقات',
+                slide6_desc: 'شاي بالنعناع، قهوة، عصير برتقال وأطباق شهية.',
+                'tab-all': 'الكل',
+                'tab-breakfast': 'الفطور',
+                'tab-mkilat': 'المقيلات',
+                'tab-tajine': 'الطواجن',
+                'tab-mhiricha': 'المحيريشة',
+                'tab-popular': 'أطباق شعبية',
+                'tab-drinks': 'المشروبات',
+                breakfast_title: 'وجبات الفطور',
+                chamali: 'عصير برتقال + كأس شاي + أومليت + ديك رومي مدخن + جبن + زيت زيتون + جبن أحمر + زيتون أسود + أفوكادو مقطع + خبز',
+                fassi: 'أومليت بالخليع + عصير برتقال + مشروب ساخن + زيت زيتون + خبز + زيتون أسود',
+                express: 'أومليت + جبن + زيتون أسود + خبز + شاي + زيت زيتون',
+                anass: 'خليع وجبن + عصير برتقال + مشروب ساخن + زيت زيتون + زيتون أسود',
+                beldi: 'أملو + زيت زيتون + عسل + زبدة + خبز + مشروب ساخن + بطبوط + مسمن + عصير برتقال',
+                'extra-egg': '* بيضة بلدية إضافية : +2 درهم',
+                mkilat_title: 'المقيلات',
+                mkilaanass: 'جبن + لحم مفروم + زيتون أسود + طماطم',
+                mkilamixte: 'جبن + كاشير + زيتون أسود',
+                tajine_title: 'طواجن الغداء',
+                mhiricha_title: 'المحيريشة',
+                popular_title: 'أطباق شعبية و كسكس',
+                drinks_title: 'مشروبات و مرافقات',
+                'order-btn': 'اطلب عبر الواتساب',
+                'footer-desc': 'وجهتك الأفضل في مراكش لتذوق فطور بلدي أصيل، مقيلات وطواجن مغربية تقليدية.',
+                'footer-contact': 'اتصال وعنوان',
+                'footer-hours': 'ساعات العمل',
+                'footer-hours-text': 'مفتوح 6 أيام في الأسبوع — مغلق يوم الأحد.',
+                'footer-couscous': '* كسكس مغربي متوفر كل يوم جمعة !',
+                'footer-rfissa': '* الرفيسة المغربية متوفرة كل يوم أربعاء !'
+            },
+            en: {
+                address: 'School Street, Bouakkaz, Marrakech',
+                subtitle: 'Breakfast',
+                mascot: 'Welcome to Espace Anass!',
+                slide1_title: 'Authentic Breakfast',
+                slide1_desc: 'Chamali, Fassi and Beldi formulas to start your day right.',
+                slide2_title: 'Mkilat & Omelettes',
+                slide2_desc: 'Our famous mkilat prepared with fresh and tasty ingredients.',
+                slide3_title: 'Traditional Tajines',
+                slide3_desc: 'Chicken Tajine, Beef with Vegetables, and Minced Meat.',
+                slide4_title: 'Couscous & Popular Dishes',
+                slide4_desc: 'Beef and Chicken Couscous available every Friday.',
+                slide5_title: 'Rfissa & Specialties',
+                slide5_desc: 'Moroccan Rfissa, Harira Soup, Bisara and more.',
+                slide6_title: 'Drinks & Sides',
+                slide6_desc: 'Mint Tea, Coffee, Orange Juice and other delights.',
+                'tab-all': 'All',
+                'tab-breakfast': 'Breakfast',
+                'tab-mkilat': 'Mkilat',
+                'tab-tajine': 'Tajines',
+                'tab-mhiricha': 'Mhiricha',
+                'tab-popular': 'Popular Dishes',
+                'tab-drinks': 'Drinks',
+                breakfast_title: 'Breakfast Formulas',
+                chamali: 'Orange juice + Tea glass + Omelette + Smoked turkey + Jben + Olive oil + Red cheese + Black olive + Avocado slices + Bread',
+                fassi: 'Khlii Omelette + Orange juice + Hot drink + Olive oil + Bread + Black olive',
+                express: 'Omelette + Cheese + Black olive + Bread + Tea + Olive oil',
+                anass: 'B.M Khlii Cheese + Orange juice + Hot drink + Olive oil + Black olive',
+                beldi: 'Amlou + Olive oil + Honey + Butter + Bread + Hot drink + Batboute + Msemen + Orange juice',
+                'extra-egg': '* Extra Beldi Egg : +2 DH',
+                mkilat_title: 'Mkilat',
+                mkilaanass: 'Cheese + Minced Meat + Black Olive + Tomato',
+                mkilamixte: 'Cheese + Luncheon + Black Olive',
+                tajine_title: 'Lunch Menu - Tajines',
+                mhiricha_title: 'Mhiricha',
+                popular_title: 'Popular Dishes & Couscous',
+                drinks_title: 'Drinks & Sides',
+                'order-btn': 'Order via WhatsApp',
+                'footer-desc': 'Your best destination in Marrakech to enjoy a true beldi breakfast, mkilat and traditional Moroccan tajines.',
+                'footer-contact': 'Contact & Address',
+                'footer-hours': 'Opening Hours',
+                'footer-hours-text': 'Open 6 days/week — Closed on Sunday.',
+                'footer-couscous': '* Moroccan Couscous available every Friday!',
+                'footer-rfissa': '* Moroccan Rfissa available every Wednesday!'
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const dict = translations[lang];
+            if (!dict) return;
+
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (dict[key] !== undefined) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            document.querySelectorAll('.lang-dropdown-content button').forEach(btn => {
+                btn.classList.remove('active-lang');
+                if (btn.getAttribute('data-lang-code') === lang) {
+                    btn.classList.add('active-lang');
+                }
+            });
+
+            const msg = document.getElementById('mascotMsg');
+            if (!isHatched) {
+                msg.textContent = dict.mascot || msg.textContent;
+            }
+
+            localStorage.setItem('lang', lang);
+        }
+
+        // Language dropdown buttons
+        document.querySelectorAll('.lang-dropdown-content button').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const code = this.getAttribute('data-lang-code');
+                applyLanguage(code);
+            });
+        });
+
+        document.getElementById('langToggleBtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            const dropdown = document.getElementById('langDropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+            }
+        });
+
+        document.addEventListener('click', function () {
+            document.getElementById('langDropdown').style.display = 'none';
+        });
+
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        applyLanguage(savedLang);
+
+        // ==========================================
+        // 6. EXTRA EFFECTS
+        // ==========================================
+        document.querySelectorAll('.item-img-placeholder').forEach(el => {
+            el.classList.add('glow-gold');
+        });
+    </script>
+</body>
+</html>
