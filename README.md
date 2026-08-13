@@ -1,12 +1,6 @@
 Bonjour Monsieur/Madame,
 
-Votre site web est maintenant disponible sur GitHub. Voici les liens:
-
-🔗 **Lien du site en ligne:**
-https://espaceanasrestaurantfamiliale.netlify.app/
-
-📂 **Lien du code source:**
-https://github.com/amerwebb/espace-anas-restaurant
+Votre site web est maintenant disponible sur GitHub
 
 📝 **Documentation:**
 Le README.md contient toutes les informations sur le projet.
